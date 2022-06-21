@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Excluir
+{% endblock %}
+
+{% block conteudo %}
+    <h1>Excluir</h1>
+    <p>Deseja excluir {{ object }}?</p>
+    <form action="" class="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn btn-danger btn-sn">Confirmar</button>
+    </form>
+{% endblock %}

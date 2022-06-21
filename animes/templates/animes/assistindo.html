@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Assistindo
+{% endblock %}
+
+{% block adicionar %}
+    <h1 class="text-center mt-5">Assistindo</h1>
+    <div class="text-center mt-5 mb-3">
+        <a href="{% url 'adicionar' %}" class="btn btn-success btn-sn text-decoration-none">Adicionar</a>
+    </div>
+    <hr>
+{% endblock %}
+
+{% block conteudo %}
+    <div class="table responsive">
+        <table class="table table striped">
+            <thead>
+                <tr>
+                    <th>Anime</th>
+                    <th>Temporada</th>
+                    <th>Status</th>
+                    <th>Comentários</th>
+                    <th colspan="2">Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for anime in object_list %}
+                    {% if anime.status == 'Assistindo' %}
+                        <tr>
+                            <td>{{ anime.nome }}</td>
+                            <td>{{ anime.temporada }}</td>
+                            <td>{{ anime.status }}</td>
+                            <td>{{ anime.comentarios }}</td>
+                            <td><a href="{% url 'editar' anime.pk %}" class="btn btn-secondary btn-sn text-decoration-none">Editar</a></td>
+                            <td><a href="{% url 'excluir' anime.pk %}" class="btn btn-secondary btn-sn text-decoration-none">Excluir</a></td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
