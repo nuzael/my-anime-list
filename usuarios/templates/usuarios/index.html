@@ -5,7 +5,13 @@
 {% endblock %}
 
 {% block conteudo %}
-    <h1>Bem vindo!</h1>
-    <a href="{% url 'login' %}">Fazer Login</a>
-    <a href="{% url 'cadastro' %}">Fazer Cadastro</a>
+    <div class="row">
+        <div class="col-md-5 mx-auto">
+            <h1>Seja bem vindo ao MyAnimeList!</h1>
+            <hr>
+            <a href="{% url 'login' %}" class="btn btn-secondary btn-sn mb-2 mt-2">Faça Login</a>
+            <p>ou</p>   
+            <a href="{% url 'cadastro' %}" class="btn btn-secondary btn-sn">Cadastre-se</a>
+        </div>
+    </div>
 {% endblock %}

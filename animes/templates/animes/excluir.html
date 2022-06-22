@@ -10,7 +10,7 @@
             <h1>Excluir</h1>
             <hr>
             <br>
-            <p>Deseja excluir {{ object }}?</p>
+            <p>Deseja excluir <strong>{{ object }}</strong>?</p>
             <form action="" method="POST">
                 {% csrf_token %}
                 {{ form }}
