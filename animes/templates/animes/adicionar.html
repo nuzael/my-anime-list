@@ -6,10 +6,16 @@
 {% endblock %}
 
 {% block conteudo%}
-    <h1>Adicionar Animes</h1>
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{ form | crispy }}
-        <button type="submit" class="btn btn-success btn-sn">Adicionar</button>
-    </form>
+    <div class="row">
+        <div class="col-md-5 mx-auto">
+            <h1>Adicionar Animes</h1>
+            <hr>
+            <br>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <button type="submit" class="btn btn-success btn-sn">Adicionar</button>
+            </form>
+        </div>
+    </div>
 {% endblock %}

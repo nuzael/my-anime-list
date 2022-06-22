@@ -12,7 +12,7 @@ class Anime(models.Model):
     nome = models.CharField(max_length=255)
     temporada = models.CharField(max_length=100, blank=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES)
-    comentarios = models.TextField(max_length=50, blank=True, verbose_name='Comentários')
+    comentarios = models.CharField(max_length=150, blank=True, verbose_name='Comentários')
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):

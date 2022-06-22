@@ -1,3 +1,4 @@
+from dataclasses import fields
 from django.views.generic.edit import CreateView, DeleteView, UpdateView 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
@@ -43,5 +44,6 @@ class AnimeUpdate(LoginRequiredMixin, UpdateView):
 # DeleteView
 class AnimeDelete(LoginRequiredMixin, DeleteView):
     model = Anime
+    fields = '__all__'
     template_name = 'animes/excluir.html'
     success_url = reverse_lazy('todos-animes')
