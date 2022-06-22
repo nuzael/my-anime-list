@@ -1,6 +1,7 @@
 from dataclasses import fields
 from django.views.generic.edit import CreateView, DeleteView, UpdateView 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.paginator import Paginator
 from django.views.generic import ListView
 from django.urls import reverse_lazy
 from .models import Anime
@@ -9,6 +10,7 @@ from .models import Anime
 # ListView
 class TodosList(LoginRequiredMixin, ListView):
     model = Anime
+    paginate_by = 10
     template_name = 'animes/todos_animes.html'
 
 class AssistirList(LoginRequiredMixin, ListView):
