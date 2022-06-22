@@ -10,9 +10,10 @@
         <title>{% block titulo %}Título{% endblock %}</title>
 
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
+        
     </head>
-    <body class="bg-image" style="background-image: url('https://images5.alphacoders.com/754/754321.png'); height: 100%; background-repeat: no-repeat; background-size: cover; background-position: center right; background-attachment: fixed;"></body>
+    <body class="bg-image" background="{% static 'img/mob-psycho.png' %}" style="height: 100%; background-repeat: no-repeat; background-size: cover; background-position: center right; background-attachment: fixed;">
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">

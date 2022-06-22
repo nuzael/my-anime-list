@@ -1,7 +1,5 @@
-from dataclasses import fields
 from django.views.generic.edit import CreateView, DeleteView, UpdateView 
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.paginator import Paginator
 from django.views.generic import ListView
 from django.urls import reverse_lazy
 from .models import Anime
