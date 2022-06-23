@@ -36,6 +36,8 @@
                             <td><a href="{% url 'excluir' anime.pk %}" class="btn btn-secondary btn-sn text-decoration-none">Excluir</a></td>
                         </tr>
                     {% endif %}
+                {% empty %}
+                    <td colspan="5">Não existe nenhum anime registrado ainda nessa categoria.</td>
                 {% endfor %}
             </tbody>
         </table>
