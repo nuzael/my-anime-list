@@ -1,5 +1,6 @@
 from django.views.generic.edit import CreateView, DeleteView, UpdateView 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import get_object_or_404
 from django.views.generic import ListView
 from django.urls import reverse_lazy
 from .models import Anime
@@ -11,17 +12,33 @@ class TodosList(LoginRequiredMixin, ListView):
     paginate_by = 10
     template_name = 'animes/todos_animes.html'
 
+    def get_queryset(self):
+        self.object_list = Anime.objects.filter(usuario=self.request.user)
+        return self.object_list
+
 class AssistirList(LoginRequiredMixin, ListView):
     model = Anime
     template_name = 'animes/assistir.html'
+
+    def get_queryset(self):
+        self.object_list = Anime.objects.filter(usuario=self.request.user)
+        return self.object_list
 
 class AssistidoList(LoginRequiredMixin, ListView):
     model = Anime
     template_name = 'animes/assistido.html'
 
+    def get_queryset(self):
+        self.object_list = Anime.objects.filter(usuario=self.request.user)
+        return self.object_list
+
 class AssistindoList(LoginRequiredMixin, ListView):
     model = Anime
     template_name = 'animes/assistindo.html'
+
+    def get_queryset(self):
+        self.object_list = Anime.objects.filter(usuario=self.request.user)
+        return self.object_list
 
 # CreateView
 class AnimeCreate(LoginRequiredMixin, CreateView):
@@ -41,9 +58,17 @@ class AnimeUpdate(LoginRequiredMixin, UpdateView):
     template_name = 'animes/editar.html'
     success_url = reverse_lazy('todos-animes')
 
+    def get_object(self, queryset=None):
+        self.object = get_object_or_404(Anime, pk=self.kwargs['pk'], usuario=self.request.user)
+        return self.object
+
 # DeleteView
 class AnimeDelete(LoginRequiredMixin, DeleteView):
     model = Anime
     fields = '__all__'
     template_name = 'animes/excluir.html'
     success_url = reverse_lazy('todos-animes')
+
+    def get_object(self, queryset=None):
+        self.object = get_object_or_404(Anime, pk=self.kwargs['pk'], usuario=self.request.user)
+        return self.object
