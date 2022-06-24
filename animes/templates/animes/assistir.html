@@ -26,16 +26,14 @@
             </thead>
             <tbody>
                 {% for anime in object_list %}
-                    {% if anime.status == 'Assistir' %}
-                        <tr>
-                            <td>{{ anime.nome }}</td>
-                            <td>{{ anime.temporada }}</td>
-                            <td>{{ anime.status }}</td>
-                            <td>{{ anime.comentarios }}</td>
-                            <td><a href="{% url 'editar' anime.pk %}" class="btn btn-secondary btn-sn text-decoration-none">Editar</a></td>
-                            <td><a href="{% url 'excluir' anime.pk %}" class="btn btn-secondary btn-sn text-decoration-none">Excluir</a></td>
-                        </tr>
-                    {% endif %}
+                    <tr>
+                        <td>{{ anime.nome }}</td>
+                        <td>{{ anime.temporada }}</td>
+                        <td>{{ anime.status }}</td>
+                        <td>{{ anime.comentarios }}</td>
+                        <td><a href="{% url 'editar' anime.pk %}" class="btn btn-secondary btn-sn text-decoration-none">Editar</a></td>
+                        <td><a href="{% url 'excluir' anime.pk %}" class="btn btn-secondary btn-sn text-decoration-none">Excluir</a></td>
+                    </tr>
                 {% empty %}
                     <td colspan="5">Não existe nenhum anime registrado ainda nessa categoria.</td>
                 {% endfor %}

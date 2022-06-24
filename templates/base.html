@@ -50,10 +50,18 @@
             </div>
         </nav>
         
-        <div class="container">
+        <div class="container"> 
             {% block adicionar %}
             {% endblock %}
-            <div class="text-center py-5">
+
+            {% block busca %}
+                <form action="?" method="GET">
+                    <input type="text" name="nome" value="{{ request.GET.nome }}" class="pb-1 border" autocomplete="off">
+                    <button type="submit" class="btn btn-secondary btn-sn p-1">Buscar</button>
+                </form>
+            {% endblock %}
+
+            <div class="text-center py-3">
                 {% block conteudo %}
                 {% endblock %}
             </div>
@@ -61,13 +69,23 @@
             <div class='pagination justify-content-center'>
                 {% if is_paginated %}
                     <ul class="pagination"> 
-                        {% for pagina in paginator.page_range %}
-                            {% if page_obj.number == pagina %}
-                                <li class="page-item active"><a class="page-link" href="{% url 'todos-animes' %}?page={{ pagina }}">{{ pagina }}</a></li>
-                            {% else %}
-                                <li class="page-item"><a class="page-link" href="{% url 'todos-animes' %}?page={{ pagina }}">{{ pagina }}</a></li>
-                            {% endif %}
-                        {% endfor %}
+                        {% if request.GET.nome %}
+                            {% for pagina in paginator.page_range %}
+                                {% if page_obj.number == pagina %}
+                                    <li class="page-item active"><a class="page-link" href="{% url 'todos-animes' %}?page={{ pagina }}&nome={{ request.GET.nome }}">{{ pagina }}</a></li>
+                                {% else %}
+                                    <li class="page-item"><a class="page-link" href="{% url 'todos-animes' %}?page={{ pagina }}&nome={{ request.GET.nome }}">{{ pagina }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            {% for pagina in paginator.page_range %}
+                                {% if page_obj.number == pagina %}
+                                    <li class="page-item active"><a class="page-link" href="{% url 'todos-animes' %}?page={{ pagina }}">{{ pagina }}</a></li>
+                                {% else %}
+                                    <li class="page-item"><a class="page-link" href="{% url 'todos-animes' %}?page={{ pagina }}">{{ pagina }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
                     </ul>
                 {% endif %}
             </div>

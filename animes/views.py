@@ -13,32 +13,56 @@ class TodosList(LoginRequiredMixin, ListView):
     template_name = 'animes/todos_animes.html'
 
     def get_queryset(self):
-        self.object_list = Anime.objects.filter(usuario=self.request.user)
-        return self.object_list
+        txt_nome = self.request.GET.get('nome')
+
+        if txt_nome:
+            self.object_list = Anime.objects.filter(nome__icontains=txt_nome, usuario=self.request.user)
+            return self.object_list
+        else:
+            self.object_list = Anime.objects.filter(usuario=self.request.user)
+            return self.object_list
 
 class AssistirList(LoginRequiredMixin, ListView):
     model = Anime
     template_name = 'animes/assistir.html'
 
     def get_queryset(self):
-        self.object_list = Anime.objects.filter(usuario=self.request.user)
-        return self.object_list
+        txt_nome = self.request.GET.get('nome')
+
+        if txt_nome:
+            self.object_list = Anime.objects.filter(nome__icontains=txt_nome, usuario=self.request.user)
+            return self.object_list
+        else:
+            self.object_list = Anime.objects.filter(usuario=self.request.user, status='Assistir')
+            return self.object_list
 
 class AssistidoList(LoginRequiredMixin, ListView):
     model = Anime
     template_name = 'animes/assistido.html'
 
     def get_queryset(self):
-        self.object_list = Anime.objects.filter(usuario=self.request.user)
-        return self.object_list
+        txt_nome = self.request.GET.get('nome')
+
+        if txt_nome:
+            self.object_list = Anime.objects.filter(nome__icontains=txt_nome, usuario=self.request.user)
+            return self.object_list
+        else:
+            self.object_list = Anime.objects.filter(usuario=self.request.user, status='Assistido')
+            return self.object_list
 
 class AssistindoList(LoginRequiredMixin, ListView):
     model = Anime
     template_name = 'animes/assistindo.html'
 
     def get_queryset(self):
-        self.object_list = Anime.objects.filter(usuario=self.request.user)
-        return self.object_list
+        txt_nome = self.request.GET.get('nome')
+
+        if txt_nome:
+            self.object_list = Anime.objects.filter(nome__icontains=txt_nome, usuario=self.request.user)
+            return self.object_list
+        else:
+            self.object_list = Anime.objects.filter(usuario=self.request.user, status='Assistindo')
+            return self.object_list
 
 # CreateView
 class AnimeCreate(LoginRequiredMixin, CreateView):
