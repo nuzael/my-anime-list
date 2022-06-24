@@ -9,7 +9,7 @@ from .models import Anime
 # ListView
 class TodosList(LoginRequiredMixin, ListView):
     model = Anime
-    paginate_by = 10
+    paginate_by = 15
     template_name = 'animes/todos_animes.html'
 
     def get_queryset(self):
@@ -25,6 +25,7 @@ class TodosList(LoginRequiredMixin, ListView):
 class AssistirList(LoginRequiredMixin, ListView):
     model = Anime
     template_name = 'animes/assistir.html'
+    paginate_by = 15
 
     def get_queryset(self):
         txt_nome = self.request.GET.get('nome')
@@ -39,6 +40,7 @@ class AssistirList(LoginRequiredMixin, ListView):
 class AssistidoList(LoginRequiredMixin, ListView):
     model = Anime
     template_name = 'animes/assistido.html'
+    paginate_by = 15
 
     def get_queryset(self):
         txt_nome = self.request.GET.get('nome')
@@ -53,6 +55,7 @@ class AssistidoList(LoginRequiredMixin, ListView):
 class AssistindoList(LoginRequiredMixin, ListView):
     model = Anime
     template_name = 'animes/assistindo.html'
+    paginate_by = 15
 
     def get_queryset(self):
         txt_nome = self.request.GET.get('nome')
