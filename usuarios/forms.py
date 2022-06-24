@@ -11,6 +11,7 @@ class UsuarioForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1', 'password2']
 
+
     def clean_email(self):
         e = self.cleaned_data['email']
         if User.objects.filter(email=e).exists():
